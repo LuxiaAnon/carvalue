@@ -16,7 +16,8 @@ export function Serialize(dto: ClassConstructor) {
   return UseInterceptors(new SerializeInterceptor(dto));
 }
 
-//implements is different from extends. We use implements when we want to built something that satifies zll the requirements of an interface of abstract class.
+//implements is different from extends. 
+//We use implements when we want to built something that satifies zll the requirements of an interface of abstract class.
 export class SerializeInterceptor implements NestInterceptor {
   constructor(private dto: any) {}
 
