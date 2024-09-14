@@ -15,7 +15,6 @@ export class AuthService {
     if (existingUsers.length) {
       throw new BadRequestException('Email in use');
     }
-
     // hash the user's password
     // generate a salt
     const salt = randomBytes(8).toString('hex');

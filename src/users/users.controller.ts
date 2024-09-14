@@ -34,6 +34,8 @@ export class UsersController {
     return user;
   }
 
+  // Auth routes
+
   @Post('/signup')
   async createUser(@Body() body: CreateUserDto, @Session() session: any) {
     const user = await this.authService.signup(body.email, body.password);
@@ -53,6 +55,8 @@ export class UsersController {
     session.userId = null;
   }
 
+  // User routes
+
   @Get('/:id')
   async findUser(@Param('id') id: string) {
     const user = await this.userService.findOne(Number(id));
@@ -67,13 +71,13 @@ export class UsersController {
     return this.userService.find(email);
   }
 
-  @Delete('/:id')
-  removeUser(@Param('id') id: string) {
-    return this.userService.remove(Number(id));
-  }
-
   @Put('/:id')
   updateUser(@Param('id') id: string, @Body() body: UpdateUserDto) {
     return this.userService.update(Number(id), body);
+  }
+
+  @Delete('/:id')
+  removeUser(@Param('id') id: string) {
+    return this.userService.remove(Number(id));
   }
 }
